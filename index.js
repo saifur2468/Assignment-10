@@ -6,7 +6,6 @@ const { MongoClient, ObjectId } = require('mongodb');
 const app = express();
 const port = process.env.PORT || 5000;
 
-// Middleware
 app.use(cors());
 app.use(express.json());
 
@@ -18,7 +17,7 @@ async function run() {
   try {
     // Connect to MongoDB
     await client.connect();
-    const db = client.db('gameReviewDB'); // Database name
+    const db = client.db('gameReviewDB');
     const reviewsCollection = db.collection('review');
     const watchlistCollection = db.collection('watchlist');
 
@@ -86,7 +85,6 @@ async function run() {
     });
 
     // ---------------- Watchlist Routes ----------------
-
     const watchlistRouter = express.Router();
 
     // Add to watchlist
@@ -117,13 +115,11 @@ async function run() {
   }
 }
 
-// Run the server
+// Run server
 run().catch(console.dir);
 
 // Test route
-app.get('/', (req, res) => {
-  res.send('Gaming Server is running...');
-});
+app.get('/', (req, res) => res.send('Gaming Server is running...'));
 
 // Listen
 app.listen(port, () => console.log(`🚀 Server running on port ${port}`));
