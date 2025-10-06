@@ -18,7 +18,7 @@ async function run() {
     // Connect to MongoDB
     await client.connect();
     const db = client.db('gameReviewDB');
-    const reviewsCollection = db.collection('review');
+    const reviewsCollection = db.collection('reviews');
     const watchlistCollection = db.collection('watchlist');
 
     console.log("MongoDB connected");
